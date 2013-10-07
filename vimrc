@@ -20,6 +20,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => general
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set pathogen
+call pathogen#infect()
 "Set terminal color
 set t_Co=256
 "change to work place
