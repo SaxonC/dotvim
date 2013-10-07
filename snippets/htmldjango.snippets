@@ -1,0 +1,228 @@
+# Generic Tags
+snippet %
+	{% ${1} %}${2}
+snippet %%
+	{% ${1:tag_name} %}
+		${2}
+	{% end$1 %}
+snippet {{
+	{{ ${1} }}${2}
+# Template Tags
+
+snippet autoescape
+	{% autoescape ${1:off} %}
+		${2}
+	{% endautoescape %}
+snippet block
+	{% block ${1} %}
+		${2}
+	{% endblock %}
+snippet #
+	{# ${1:comment} #}
+		snippet comment
+	{% comment %}
+	${1}
+	{% endcomment %}
+snippet cycle
+	{% cycle ${1:val1} ${2:val2} ${3:as ${4}} %}
+		snippet debug
+	{% debug %}
+snippet extends
+	{% extends "${1:base.html}" %}
+snippet filter
+	{% filter ${1} %}
+		${2}
+	{% endfilter %}
+snippet firstof
+	{% firstof ${1} %}
+snippet for
+	{% for ${1} in ${2} %}
+		${3}
+	{% endfor %}
+snippet empty
+	{% empty %}
+		${1}
+snippet if
+	{% if ${1} %}
+		${2}
+	{% endif %}
+snippet else
+	{% else %}
+		${1}
+snippet ifchanged
+	{% ifchanged %}${1}{% endifchanged %}
+snippet ifequal
+	{% ifequal ${1} ${2} %}
+		${3}
+	{% endifequal %}
+snippet ifnotequal
+	{% ifnotequal ${1} ${2} %}
+		${3}
+	{% endifnotequal %}
+snippet include
+	{% include "${1}" %}
+snippet load
+	{% load ${1} %}
+snippet now
+	{% now "${1:jS F Y H:i}" %}
+snippet regroup
+	{% regroup ${1} by ${2} as ${3} %}
+snippet spaceless
+	{% spaceless %}${1}{% endspaceless %}
+snippet ssi
+	{% ssi ${1} %}
+snippet trans
+	{% trans "${1:string}" %}
+snippet url
+	{% url ${1} as ${2} %}
+snippet widthratio
+	{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}
+snippet with
+	{% with ${1} as ${2} %}
+# Template Filters
+
+# Note: Since SnipMate can't determine which template filter you are
+# expanding without the "|" character, these do not add the "|"
+# character. These save a few keystrokes still.
+
+# Note: Template tags that take no arguments are not implemented.
+
+snippet add
+	add:"${1}"
+snippet center
+	center:"${1}"
+snippet cut
+	cut:"${1}"
+snippet date
+	date:"${1}"
+snippet default
+	default:"${1}"
+snippet defaultifnone
+	default_if_none:"${1}"
+snippet dictsort
+	dictsort:"${1}"
+snippet dictsortrev
+	dictsortreversed:"${1}"
+snippet divisibleby
+	divisibleby:"${1}"
+snippet floatformat
+	floatformat:"${1}"
+snippet getdigit
+	get_digit:"${1}"
+snippet join
+	join:"${1}"
+snippet lengthis
+	length_is:"${1}"
+snippet pluralize
+	pluralize:"${1}"
+snippet removetags
+	removetags:"${1}"
+snippet slice
+	slice:"${1}"
+snippet stringformat
+	stringformat:"${1}"
+snippet time
+	time:"${1}"
+snippet truncatewords
+	truncatewords:${1}
+snippet truncatewordshtml
+	truncatewords_html:${1}
+snippet urlizetrunc
+	urlizetrunc:${1}
+snippet wordwrap
+	wordwrap:${1}
+snippet doct5
+	<!DOCTYPE HTML>
+snippet html
+	<html>
+		${1}
+	</html>
+snippet body
+	<body>
+		${1}
+	</body>
+snippet head
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>
+	</head>
+snippet title
+	<title>${1:`substitute(Filename('', 'Page Title'), '^.', '\u&', '')`}</title>${2}
+snippet script
+	<script type="text/javascript" charset="utf-8">
+		${1}
+	</script>${2}
+snippet scriptsrc
+	<script src="${1}.js" type="text/javascript" charset="utf-8"></script>${2}
+snippet style
+	<style>
+		${2}
+	</style>${3}
+snippet base
+	<base href="${1}" target="${2}">
+snippet r
+	<br />
+snippet div
+	<div id="${1:name}">
+		${2}
+	</div>
+snippet fieldset
+	<fieldset id="$1">
+		<legend>${1:name}</legend>
+
+		${3}
+	</fieldset>
+snippet form
+	<form action="${1:`Filename('$1_submit')`}" method="${2:get}" accept-charset="utf-8">
+		${3}
+
+
+	<p><input type="submit" value="Continue &rarr;"></p>
+	</form>
+snippet h1
+	<h1>${1}</h1>
+snippet input
+	<input type="${1:text/submit/hidden/button}" name="${2:some_name}" value="${3}">${4}
+snippet label
+	<label for="${2:$1}">${1:name}</label>
+snippet link
+	<link rel="${1:stylesheet}" href="${2:/css/master.css}" type="text/css" media="${3:screen}" charset="utf-8"i />${4}
+snippet mailto
+	<a href="mailto:${1:joe@example.com}?subject=${2:feedback}">${3:email me}</a>
+snippet ahref
+	<a href="${1}" >${2}</a>
+snippet meta
+	<meta name="${1:name}" content="${2:content}">${3}
+snippet opt
+	<option value="${1:option}">${2:$1}</option>${3}
+snippet optt
+	<option>${1:option}</option>${2}
+snippet select
+	<select name="${1:some_name}" id="${2:$1}">
+		<option value="${3:option}">${4:$3}</option>
+	</select>${5}
+snippet table
+	<table border="${1:0}">
+		<tr><th>${2:Header}</th></tr>
+		<tr><th>${3:Data}</th></tr>
+	</table>${4}
+snippet textarea
+	<textarea name="${1:Name}" rows="${2:8}" cols="${3:40}">${4}</textarea>${5}
+snippet header
+	<header>${1}</header>
+snippet nav
+	<nav>${1}</nav>
+snippet section
+	<section>${1}</section>
+snippet article
+	<article>${1}</article>
+snippet footer
+	<footer>${1}</footer>
+snippet aside
+	<aside>${1}</aside>
+snippet ul
+	<ul>${1}</ul>
+snippet li
+	<li>${1}</li>
+snippet para
+	<p>${1}</p>
