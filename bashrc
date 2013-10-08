@@ -2,7 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export PATH=$PATH:/usr/lib/vmware/bin
 export EDITOR=$(which vim)
 
 PYTHONSTARTUP=~/.pythonrc.py
@@ -89,6 +88,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias rm='rm -i'
+alias vi='vim'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -185,3 +185,24 @@ PS1="$TITLEBAR ${EMK}[${EMM}\u${EMK}@${EMM}\h${EMB} \${NEW_PWD}${EMK}]\
 PROMPT_COMMAND=bash_prompt_command
 bash_prompt
 unset bash_prompt
+
+if [ "$TERM" != "xterm-256color" ]; then
+    local256="$COLORTERM$XTERM_VERSION$ROXTERM_ID$KONSOLE_DBUS_SESSION"
+
+    if [ -n "$local256" ] || [ -n "$SEND_256_COLORS_TO_REMOTE" ]; then
+
+        case "$TERM" in
+            'xterm') TERM=xterm-256color;;
+            'screen') TERM=screen-256color;;
+            'Eterm') TERM=Eterm-256color;;
+        esac
+        export TERM
+
+        if [ -n "$TERMCAP" ] && [ "$TERM" = "screen-256color" ]; then
+            TERMCAP=$(echo "$TERMCAP" | sed -e 's/Co#8/Co#256/g')
+            export TERMCAP
+        fi
+    fi
+unset local256
+fi
+

@@ -22,8 +22,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Set pathogen
 call pathogen#infect()
-"Set terminal color
-set t_Co=256
 "change to work place
 cd ~/Ubuntu\ One/WorkPlace/
 " use vim settings, rather than Vi settings (much better!).
@@ -32,13 +30,13 @@ set nocompatible
 filetype plugin indent on
 " fast editing of the .vimrc
 if has("win32")
-    nmap <leader>cf :tabedit! C:\Program Files (x86)\Vim\_vimrc<CR>
+    nmap <leader>cf :tabedit! C:\Program Files (x86)\Vim\_gvimrc<CR>
     " when vimrc is edited, reload it
-    autocmd! bufwritepost _vimrc source $VIM/.vimrc
+    autocmd! bufwritepost _gvimrc source $VIM/.gvimrc
 else
-    nmap <leader>cf :tabedit! ~/.vimrc<CR>
+    nmap <leader>cf :tabedit! ~/.gvimrc<CR>
     " when vimrc is edited, reload it
-    autocmd! bufwritepost .vimrc source ~/.vimrc
+    autocmd! bufwritepost .gvimrc source ~/.gvimrc
 endif
 " sets how many lines of history VIM has to remember
 set history=100
@@ -323,7 +321,7 @@ function! NERDTree_IsValid()
     return 1
 endfunction
 nmap wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
-nmap <F10> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+nmap <F2> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
 " => NERDTree
 let g:NERDTreeShowBookmarks=1
 " => Taglist
