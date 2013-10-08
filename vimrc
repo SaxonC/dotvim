@@ -58,6 +58,7 @@ set listchars=tab:▸\ ,eol:¬
 set suffixesadd+=.rb,.py,.js
 "Excute without !
 set hidden
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,12 +91,11 @@ set tm=500
 set cursorline
 "Set line numbers
 set nu
-"Set initial size
-set lines=60 columns=120
 "remove highlight serch results
 noremap <C-u> :nohl<CR>
 vnoremap <C-u> :nohl<CR>
 inoremap <C-u> :nohl<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Color and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -113,6 +113,7 @@ au InsertLeave,InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 "Invisible character colors
 highlight NonText guifg=#ff6666 "eol
 highlight SpecialKey guifg=#ff6666 "tab
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -120,6 +121,7 @@ highlight SpecialKey guifg=#ff6666 "tab
 set nobackup
 "Turn off write backup
 set nowb
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -154,11 +156,13 @@ endif
 " tab to spaces -> set expandtab, retab!
 " Strip white spaces -> %s/\s\+$//e
 " Strip white lines -> g/^$/d
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Show current full path
 cnoremap <expr>%% getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -172,6 +176,7 @@ map <leader>tm :tabmove
 map <leader>e :browse edit<CR>
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,6 +193,7 @@ set statusline+=%= " right align
 set statusline+=Current:%l-%c
 "statusline color
 highlight StatusLine guifg=#3E3D32 guibg=white
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,7 +203,6 @@ vnoremap $3 <esc>`>a}<esc>`<i{<esc>
 vnoremap sq <esc>`>a"<esc>`<i"<esc>
 vnoremap dq <esc>`>a'<esc>`<i'<esc>
 vnoremap $a <esc>`>a"<esc>`<i"<esc>
-
 " Map auto complete of (, ", ', [
 inoremap $1 ()<esc>i
 inoremap $2 []<esc>i
@@ -216,6 +221,7 @@ noremap <leader>py :!python %<cr>
 noremap <leader>pya :!python "%"<space>
 noremap <leader>sh :write ! bash<cr>
 noremap <leader>sha :write ! bash<space>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -234,6 +240,7 @@ nmap <leader>l :set list!<CR>
 "onoremap <C-A> <C-C>gggH<C-O>G
 "snoremap <C-A> <C-C>gggH<C-O>G
 "xnoremap <C-A> <C-C>ggVG
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -245,9 +252,11 @@ nmap <leader>l :set list!<CR>
 "map <leader>cc :botright cope<CR>
 "map <leader>n :cn<CR>
 "map <leader>p :cp<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -282,6 +291,7 @@ let g:NERDTreeShowBookmarks=1
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=0
 let Tlist_Show_Menu=1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
