@@ -205,4 +205,3 @@ if [ "$TERM" != "xterm-256color" ]; then
     fi
 unset local256
 fi
-
