@@ -29,7 +29,7 @@ set nocompatible
 "Enable filetype plugin
 filetype plugin indent on
 " fast editing of the .vimrc
-if has("win32")
+if has('win32')
     nmap <leader>cf :tabedit! C:\Program Files (x86)\Vim\_gvimrc<CR>
     " when vimrc is edited, reload it
     autocmd! bufwritepost _gvimrc source $VIM/.gvimrc
@@ -120,9 +120,14 @@ set lazyredraw
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 "show extra whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=lightblue
-highlight ExtraWhitespace ctermbg=red guibg=lightblue
-au InsertLeave,InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+if has('autocmd')
+    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=lightblue
+    highlight ExtraWhitespace ctermbg=red guibg=lightblue
+    au InsertLeave,InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+    highlight OverLength ctermbg=red guibg=#592929
+    " show OverLength character except text file
+    au InsertLeave,InsertEnter * if &ft != 'text' | match OverLength /\%>79v.\+/
+endif
 "Invisible character colors
 highlight NonText guifg=#ff6666 "eol
 highlight SpecialKey guifg=#ff6666 "tab
@@ -152,13 +157,14 @@ set wrapmargin=0
 set autoindent
 set smartindent
 set fo+=t
-if has("autocmd")
+if has('autocmd')
     " Customisations based on language
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
     autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
     autocmd FileType c setlocal ts=4 sts=4 sw=4 noexpandtab
+    autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
     " Treat .rss file as XML
     " autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
@@ -185,7 +191,7 @@ map <leader>tm :tabmove
 map <leader>e :browse edit<CR>
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
-if has("gui_mac")
+if has('gui_mac')
     " For mac users (using the 'apple' key)
     nmap <D-1> 1gt
     nmap <D-2> 2gt
@@ -221,12 +227,13 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set status line at second-last line
 set laststatus=2
 set statusline=
 set statusline+=%2*%-3.3n%0*\ "buffer number
 set statusline+=%F\ " file name
 set statusline+=[
-set statusline+=%{strlen(&ft)?&ft:'none'}, " filetype
+set statusline+=%{strlen(&ft)?&ft:'none'}, "filetype
 set statusline+=%{&fileencoding}, " encoding
 set statusline+=%{&fileformat}] " file format
 set statusline+=%h%1*%m%r%w%0* " flag
@@ -258,8 +265,6 @@ inoremap $a <><esc>i
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Show current date <key> <command>
 iab showdate <C-r>=strftime("%a, %d %b, %Y")<CR>
-noremap <leader>py :!python %<cr>
-noremap <leader>pya :!python "%"<space>
 noremap <leader>sh :write ! bash<cr>
 noremap <leader>sha :write ! bash<space>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -330,21 +335,24 @@ let Tlist_Exit_OnlyWindow=0
 let Tlist_Show_Menu=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let python_highlight_all = 1
-au FileType python syn keyword pythonDecorator True None False self
-au BufNewFile,BufRead *.jinja set syntax=htmljinja
-au BufNewFile,BufRead *.mako set ft=mako
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if has('autocmd')
+    " Set plain text syntax
+    au BufReadPost * if &ft == 'text' | set syntax=asciidoc
+    au BufNewFile,BufRead *.jinja set syntax=htmljinja
+    au BufNewFile,BufRead *.mako set ft=mako
+    au BufNewFile,BufRead *.py setlocal makeprg=python\ %
+    " Set make to run python as compiler
+    au FileType python syn keyword pythonDecorator True None False self
+    "Uncomment this if writing in jquery instead of javascript
+    "au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+    "nginx file in particular, path might need to be amemded
+    "au BufRead,BufNewFile /usr/local/nginx/conf/* set ft=nginx
+    " alert html file for htmldjango
+    "au BufRead,BufNewFile *.html set ft=htmldjango syntax=htmldjango
+endif
 "au FileType python inoremap <buffer> $f #--- PH ----------------------------------------------<esc>FP2xi
 "au FileType python map <buffer> <leader>1 /class
-"autocmd FileType python compiler pylint
-"let g:pylint_onwrite = 0
-"let g:pylint_show_rate = 0
 let g:pydoc_open_cmd = 'vsplit'
 let g:pydoc_highlight=0
-"Uncomment this if writing in jquery instead of javascript
-"au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-"nginx file in particular, path might need to be amemded
-"au BufRead,BufNewFile /usr/local/nginx/conf/* set ft=nginx
-" alert html file for htmldjango
-"au BufRead,BufNewFile *.html set ft=htmldjango syntax=htmldjango
+
