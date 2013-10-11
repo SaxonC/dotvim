@@ -63,7 +63,7 @@ set hidden
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Turn on wild menu
 set wildmenu
-set wildmode=list:full
+set wildmode=list:longest
 "Always show current position
 set ruler
 "Search options
@@ -326,7 +326,7 @@ let Tlist_Show_Menu=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('autocmd')
     " Set plain text syntax
-    au BufRead * if &ft == 'text' | set syntax=asciidoc
+    au BufRead *.txt set syntax=asciidoc
     au BufNewFile,BufRead *.jinja set syntax=htmljinja
     au BufNewFile,BufRead *.mako set ft=mako
     au BufNewFile,BufRead *.py setlocal makeprg=python\ %
