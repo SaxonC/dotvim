@@ -4,16 +4,22 @@
 " Last change:  SUN, 29 Jan 2012
 "
 "sections:
-"    -> command mode related
-"    -> moving around, tabs and buffers
-"    -> statusline
-"    -> parenthesis/bracket expanding
-"    -> general Abbrevs
-"    -> editing mappings
-"    -> cope
-"    -> minibuffer plugin
-"    -> omni complete functions
+"    -> General
+"    -> Vim user interface
+"    -> Color and Fonts
+"    -> Files and backups
+"    -> Text, tab, and indent
+"    -> Command mode
+"    -> Moving around, tabs and buffer
+"    -> Statusline
+"    -> Parenthesis/bracket expanding
+"    -> General Abbrevs
+"    -> Editing mappings
+"    -> Cope
+"    -> Omni complete function
+"    -> Plugin
 "    -> Syntax
+"    -> Slef defined functions
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -58,6 +64,7 @@ set listchars=tab:▸\ ,eol:¬
 "set suffixesadd+=.rb,.py,.js
 "Excute without !
 set hidden
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -96,6 +103,7 @@ set lines=60 columns=120
 noremap <C-u> :nohl<CR>
 vnoremap <C-u> :nohl<CR>
 inoremap <C-u> :nohl<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Color and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -108,17 +116,16 @@ language message en_US.utf-8
 set ambiwidth=double
 set lazyredraw
 "show extra whitespace
-if has('autocmd')
-    autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=lightblue
-    highlight ExtraWhitespace ctermbg=red guibg=lightblue
-    au InsertLeave,InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    highlight OverLength ctermbg=red guibg=#592929
-    " show OverLength character except text file
-    au InsertLeave,InsertEnter * if &ft != 'text' | match OverLength /\%>79v.\+/
-endif
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=lightblue
+highlight ExtraWhitespace ctermbg=red guibg=lightblue
+au InsertLeave,InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+highlight OverLength ctermbg=red guibg=#592929
+" show OverLength character except text file
+au InsertLeave,InsertEnter * if &ft != 'text' | match OverLength /\%>79v.\+/
 "Invisible character colors
 highlight NonText guifg=#ff6666 "eol
 highlight SpecialKey guifg=#ff6666 "tab
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files and backups
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -126,6 +133,7 @@ highlight SpecialKey guifg=#ff6666 "tab
 set nobackup
 "Turn off write backup
 set nowb
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -145,27 +153,27 @@ set wrapmargin=0
 set autoindent
 set smartindent
 set fo+=t
-if has('autocmd')
-    " Customisations based on language
-    autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-    autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
-    autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
-    autocmd FileType c setlocal ts=4 sts=4 sw=4 noexpandtab
-    autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
-    " Treat .rss file as XML
-    " autocmd BufNewFile,BufRead *.rss setfiletype xml
-endif
+" Customisations based on language
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType c setlocal ts=4 sts=4 sw=4 noexpandtab
+autocmd FileType python setlocal ts=4 sts=4 sw=4 noexpandtab
+" Treat .rss file as XML
+" autocmd BufNewFile,BufRead *.rss setfiletype xml
 " Converting between tabs and spaces
 " spaces to tab -> set noexpandtab, retab!
 " tab to spaces -> set expandtab, retab!
 " Strip white spaces -> %s/\s\+$//e
 " Strip white lines -> g/^$/d
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Show current full path
 cnoremap <expr>%% getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffer
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -212,6 +220,7 @@ else
     vmap <M-j> gj
     vmap <M-k> gk
 endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Statusline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -229,6 +238,7 @@ set statusline+=%= " right align
 set statusline+=Current:%l-%c
 "statusline color
 highlight StatusLine guifg=#3E3D32 guibg=white
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket expanding
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -255,6 +265,7 @@ inoremap $a <><esc>i
 iab showdate <C-r>=strftime("%a, %d %b, %Y")<CR>
 noremap <leader>sh :write ! bash<cr>
 noremap <leader>sha :write ! bash<space>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -263,9 +274,12 @@ vnoremap <C-S-x> "+x
 "CTRL-SHIFT-C and CTRL-Insert are Copy
 vnoremap <C-S-c> "+y
 " CTRL-V and SHIFT-Insert are Paste
-map <C-S-v> "+gP
+imap <C-S-v> <ESC>"+gP
+nmap <C-S-v> <ESC>"+gP
 "Set show invisible characters
 nmap <leader>l :set list!<CR>
+" Set goto file
+"map gf :tabnew <cfile><CR>
 " CTRL-A is Select all
 "noremap <C-A> gggH<C-O>G
 "inoremap <C-A> <C-O>gg<C-O>gH<C-O>G
@@ -273,6 +287,7 @@ nmap <leader>l :set list!<CR>
 "onoremap <C-A> <C-C>gggH<C-O>G
 "snoremap <C-A> <C-C>gggH<C-O>G
 "xnoremap <C-A> <C-C>ggVG
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -284,9 +299,12 @@ nmap <leader>l :set list!<CR>
 "map <leader>cc :botright cope<CR>
 "map <leader>n :cn<CR>
 "map <leader>p :cp<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -321,25 +339,49 @@ let g:NERDTreeShowBookmarks=1
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=0
 let Tlist_Show_Menu=1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if has('autocmd')
-    " Set plain text syntax
-    au BufRead *.txt set syntax=asciidoc
-    au BufNewFile,BufRead *.jinja set syntax=htmljinja
-    au BufNewFile,BufRead *.mako set ft=mako
-    au BufNewFile,BufRead *.py setlocal makeprg=python\ %
-    " Set make to run python as compiler
-    au FileType python syn keyword pythonDecorator True None False self
-    "Uncomment this if writing in jquery instead of javascript
-    "au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-    "nginx file in particular, path might need to be amemded
-    "au BufRead,BufNewFile /usr/local/nginx/conf/* set ft=nginx
-    " alert html file for htmldjango
-    "au BufRead,BufNewFile *.html set ft=htmldjango syntax=htmldjango
-endif
+" Set plain text syntax
+au FileType text set syntax=asciidoc
+au BufNewFile,BufRead *.jinja set syntax=htmljinja
+au BufNewFile,BufRead *.mako set ft=mako
+au BufNewFile,BufRead *.py setlocal makeprg=python\ %
+" Set make to run python as compiler
+au FileType python syn keyword pythonDecorator True None False self
+"Uncomment this if writing in jquery instead of javascript
+"au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+"nginx file in particular, path might need to be amemded
+"au BufRead,BufNewFile /usr/local/nginx/conf/* set ft=nginx
+" alert html file for htmldjango
+"au BufRead,BufNewFile *.html set ft=htmldjango syntax=htmldjango
 "au FileType python inoremap <buffer> $f #--- PH ----------------------------------------------<esc>FP2xi
 "au FileType python map <buffer> <leader>1 /class
 let g:pydoc_open_cmd = 'vsplit'
 let g:pydoc_highlight=0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Slef defined functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ShortTabLine()
+    let ret = ''
+    for i in range(tabpagenr('$'))
+        if i + 1 == tabpagenr()
+            let ret .= '%#ErrorMsg#'
+        else
+            let ret .= '%#TabLine#'
+        endif
+        let buflist = tabpagebuflist(i+1)
+        let winnr = tabpagewinnr(i+1)
+        let buffername = bufname(buflist[winnr - 1])
+        let filename = fnamemodify(buffername, ':t')
+        if filename == ''
+            let filename = 'No Name'
+        endif
+        let ret .= i.'-'.filename
+    endfor
+    let ret .= '%#TabLineFill#%T'
+    return ret
+endfunction
+set tabline=%!ShortTabLine()

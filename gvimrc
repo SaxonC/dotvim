@@ -3,22 +3,6 @@
 " Maintainer:   Yi Cheng
 " Last change:  SUN, 29 Jan 2012
 "
-"sections:
-"    -> command mode related
-"    -> moving around, tabs and buffers
-"    -> statusline
-"    -> parenthesis/bracket expanding
-"    -> general Abbrevs
-"    -> editing mappings
-"    -> cope
-"    -> minibuffer plugin
-"    -> omni complete functions
-"    -> Syntax
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => general
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cd ~/Ubuntu\ One/WorkPlace/
 if has('win32')
@@ -30,10 +14,6 @@ else
     " when vimrc is edited, reload it
     autocmd! bufwritepost .gvimrc source ~/.gvimrc
 endif
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Color and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Set gui font and size
 set guifont=GohuFont\ Bold
 " For GUI: remove or add -/+ T tool bar
 set guioptions-=T
@@ -43,3 +23,4 @@ set guioptions+=r
 set guioptions+=m
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
+set guitablabel=%N-%t
