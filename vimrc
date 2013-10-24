@@ -102,7 +102,6 @@ set lines=60 columns=120
 "remove highlight serch results
 noremap <C-u> :nohl<CR>
 vnoremap <C-u> :nohl<CR>
-inoremap <C-u> :nohl<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Color and Fonts
@@ -118,10 +117,11 @@ set lazyredraw
 "show extra whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=lightblue
 highlight ExtraWhitespace ctermbg=red guibg=lightblue
-au InsertLeave,InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 highlight OverLength ctermbg=red guibg=#592929
 " show OverLength character except text file
 au InsertLeave,InsertEnter * if &ft != 'text' | match OverLength /\%>79v.\+/
+" show extra white space
+au InsertLeave,InsertEnter * 2match ExtraWhitespace /\s\+\%#\@<!$/
 "Invisible character colors
 highlight NonText guifg=#ff6666 "eol
 highlight SpecialKey guifg=#ff6666 "tab
