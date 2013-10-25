@@ -338,7 +338,7 @@ let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=0
 let Tlist_Show_Menu=1
 if has("mac")
-    let Tlist_Ctags_Cmd='\usr\local\bin\ctags'
+    let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
