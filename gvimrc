@@ -14,7 +14,12 @@ else
     " when vimrc is edited, reload it
     autocmd! bufwritepost .gvimrc source ~/.gvimrc
 endif
-set guifont=GohuFont\ Bold
+if has("mac")
+    set guifont=GohuFont-Bold:h14
+else
+    set guifont=GohuFont\ Bold
+    set lines=60 columns=120
+endif
 " For GUI: remove or add -/+ T tool bar
 set guioptions-=T
 " For GUI: remove or add -/+ r right side scroll bar

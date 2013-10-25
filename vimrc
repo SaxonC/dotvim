@@ -97,8 +97,6 @@ set tm=500
 set cursorline
 "Set line numbers
 set nu
-"Set initial size
-set lines=60 columns=120
 "remove highlight serch results
 noremap <C-u> :nohl<CR>
 vnoremap <C-u> :nohl<CR>
@@ -187,7 +185,7 @@ map <leader>tm :tabmove
 map <leader>e :browse edit<CR>
 map <leader>ew :e <C-R>=expand("%:p:h") . "/" <CR>
 map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
-if has('gui_mac')
+if has('mac')
     " For mac users (using the 'apple' key)
     nmap <D-1> 1gt
     nmap <D-2> 2gt
@@ -339,6 +337,9 @@ let g:NERDTreeShowBookmarks=1
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=0
 let Tlist_Show_Menu=1
+if has("mac")
+    let Tlist_Ctags_Cmd='\usr\local\bin\ctags'
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
