@@ -6,7 +6,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 cd ~/Ubuntu\ One/WorkPlace/
 if has('win32')
-    nmap <leader>cf :tabedit! C:\Program Files (x86)\Vim\_gvimrc<CR>
+    nmap <leader>cf :tabedit! $VIM/_gvimrc<CR>
     " when vimrc is edited, reload it
     autocmd! bufwritepost _gvimrc source $VIM/_gvimrc
 else
