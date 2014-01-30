@@ -34,9 +34,9 @@ set nocompatible
 filetype plugin indent on
 " fast editing of the .vimrc
 if has('win32')
-    nmap <leader>cf :tabedit! C:\Program Files (x86)\Vim\_vimrc<CR>
+    nmap <leader>cf :tabedit! $VIM\_vimrc<CR>
     " when vimrc is edited, reload it
-    autocmd! bufwritepost _vimrc source $VIM/._vimrc
+    autocmd! bufwritepost _vimrc source $VIM/_vimrc
 else
     nmap <leader>cf :tabedit! ~/.vimrc<CR>
     " when vimrc is edited, reload it
