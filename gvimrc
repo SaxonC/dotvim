@@ -4,7 +4,7 @@
 " Last change:  SUN, 29 Jan 2012
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-cd ~/Ubuntu\ One/WorkPlace/
+cd ~/WorkPlace/
 if has('win32')
     nmap <leader>cf :tabedit! $VIM/_gvimrc<CR>
     " when vimrc is edited, reload it
