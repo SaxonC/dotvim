@@ -16,3 +16,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/todo"]
+	path = bundle/todo
+	url = https://github.com/neochrome/todo.vim.git
