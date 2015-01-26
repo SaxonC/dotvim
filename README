@@ -2,14 +2,13 @@ Installation:
     git clone git://github.com/SaxonC/dotvim.git ~/.vim
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim (diffpath for windows)
 
+Complie YCM
+    cd ~/.vim/bundle/YouCompleteMe
+    ./install.sh --clang-completer
+
 Create symlinks:
     ln -s ~/.vim/vimrc ~/.vimrc
+    ln -s ~/.vim/gvimrc ~/.gvimrc
 
-Remove submodule
-    Remove it from .gitmodules
-    Remove it from .git/config
-    git rm --cached <path-to-module>
-
-Get submoudle
-    git submodule init
-    git submodule update
+Install Plugin
+:PluginInstall

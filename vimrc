@@ -30,13 +30,21 @@
 set nocompatible
 " Required Vundle setup
 filetype off
-set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim
+if has('win32')
+    set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim
+else
+    set runtimepath+=~/.vim//bundle/Vundle.vim
+endif
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'fs111/pydoc.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-surround'
 call vundle#end()
 "Enable filetype plugin
 filetype plugin indent on
@@ -351,6 +359,17 @@ if has("mac")
 elseif has("win32")
     let Tlist_Ctags_Cmd=$HOME.'/vimfiles/ctags58/ctags'
 endif
+" YCM
+let g:ycm_collect_identifiers_from_tags_files=1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer=1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax=1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments=1 " Completion in comments
+let g:ycm_complete_in_strings=1 " Completion in string
+" Ultisnips
+let g:UltiSnipsExpandTrigger       = "<c-j>"
+let g:UltiSnipsJumpForwardTrigger  = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-p>"
+let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on current file
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Syntax
