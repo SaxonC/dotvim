@@ -4,18 +4,22 @@
 " Last change:  SUN, 29 Jan 2012
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-cd ~/WorkPlace/
 if has('win32')
-    nmap <leader>cf :tabedit! $VIM/_gvimrc<CR>
+    cd D:\WorkPlace
+    nmap <leader>cf :tabedit! $HOME/_gvimrc<CR>
     " when vimrc is edited, reload it
-    autocmd! bufwritepost _gvimrc source $VIM/_gvimrc
+    autocmd! bufwritepost _gvimrc source $HOME/_gvimrc
 else
+    cd ~/WorkPlace/
     nmap <leader>cf :tabedit! ~/.gvimrc<CR>
     " when vimrc is edited, reload it
     autocmd! bufwritepost .gvimrc source ~/.gvimrc
 endif
 if has("mac")
     set guifont=GohuFont-Bold:h14
+elseif has("win32")
+    set guifont=gohufont-14:h9
+    set lines=60 columns=120
 else
     set guifont=GohuFont\ Bold
     set lines=60 columns=120

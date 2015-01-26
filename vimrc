@@ -26,17 +26,25 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => general
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set pathogen
-call pathogen#infect()
 " use vim settings, rather than Vi settings (much better!).
 set nocompatible
+" Required Vundle setup
+filetype off
+set runtimepath+=$HOME/vimfiles/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'tomasr/molokai'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'fs111/pydoc.vim'
+call vundle#end()
 "Enable filetype plugin
 filetype plugin indent on
 " fast editing of the .vimrc
 if has('win32')
-    nmap <leader>cf :tabedit! $VIM/_vimrc<CR>
+    nmap <leader>cf :tabedit! $HOME/_vimrc<CR>
     " when vimrc is edited, reload it
-    autocmd! bufwritepost _vimrc source $VIM/_vimrc
+    autocmd! bufwritepost _vimrc source $HOME/_vimrc
 else
     nmap <leader>cf :tabedit! ~/.vimrc<CR>
     " when vimrc is edited, reload it
@@ -154,6 +162,7 @@ set fo+=t
 " Customisations based on language
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2 noexpandtab
 autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
 autocmd FileType c setlocal ts=4 sts=4 sw=4 noexpandtab
@@ -339,6 +348,8 @@ let Tlist_Exit_OnlyWindow=0
 let Tlist_Show_Menu=1
 if has("mac")
     let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+elseif has("win32")
+    let Tlist_Ctags_Cmd=$HOME.'/vimfiles/ctags58/ctags'
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
