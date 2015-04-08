@@ -376,9 +376,10 @@ let g:UltiSnipsListSnippets        = "<c-k>" "List possible snippets based on cu
 au FileType text set syntax=asciidoc
 au BufNewFile,BufRead *.jinja set syntax=htmljinja
 au BufNewFile,BufRead *.mako set ft=mako
-au BufNewFile,BufRead *.py setlocal makeprg=python\ %
+autocmd FileType python nnoremap <buffer> <F3> :exec '!python' shellescape(@%, 1)<cr>
+autocmd FileType ruby nnoremap <buffer> <F3> :exec '!ruby' shellescape(@%, 1)<cr>
 " Set make to run python as compiler
-au FileType python syn keyword pythonDecorator True None False self
+" au FileType python syn keyword pythonDecorator True None False self
 "Uncomment this if writing in jquery instead of javascript
 "au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 "nginx file in particular, path might need to be amemded
