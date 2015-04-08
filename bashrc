@@ -207,3 +207,9 @@ if [ "$TERM" != "xterm-256color" ]; then
 unset local256
 fi
 #source /usr/bin/virtualenvwrapper.sh
+
+if [ -n "$WINDOWID" ]; then
+    TRANSPARENCY_HEX=$(printf 0x%x $((0xffffffff * 90 / 100)))
+    xprop -id "$WINDOWID" -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY "$TRANSPARENCY_HEX"
+fi
+
