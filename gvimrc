@@ -21,7 +21,7 @@ elseif has("win32")
     set guifont=gohufont-14:h9
     set lines=60 columns=120
 else
-    set guifont=GohuFont\ Bold
+    set guifont=GohuFont\ Bold\ 11
     set lines=60 columns=120
 endif
 " For GUI: remove or add -/+ T tool bar
