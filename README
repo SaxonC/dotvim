@@ -1,5 +1,7 @@
 Installation:
     git clone git://github.com/SaxonC/dotvim.git ~/.vim
+    or
+    git clone git@bitbucket.org:SaxonC/dotvim.git ~/.vim
     git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim (diffpath for windows)
 
 Complie YCM
