@@ -387,32 +387,9 @@ autocmd FileType ruby nnoremap <buffer> <F3> :exec '!ruby' shellescape(@%, 1)<cr
 "au BufRead,BufNewFile /usr/local/nginx/conf/* set ft=nginx
 " alert html file for htmldjango
 "au BufRead,BufNewFile *.html set ft=htmldjango syntax=htmldjango
-"au FileType python inoremap <buffer> $f #--- PH ----------------------------------------------<esc>FP2xi
-"au FileType python map <buffer> <leader>1 /class
 let g:pydoc_open_cmd = 'vsplit'
 let g:pydoc_highlight=0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Slef defined functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! ShortTabLine()
-    let ret = ''
-    for i in range(tabpagenr('$'))
-        if i + 1 == tabpagenr()
-            let ret .= '%#ErrorMsg#'
-        else
-            let ret .= '%#TabLine#'
-        endif
-        let buflist = tabpagebuflist(i+1)
-        let winnr = tabpagewinnr(i+1)
-        let buffername = bufname(buflist[winnr - 1])
-        let filename = fnamemodify(buffername, ':t')
-        if filename == ''
-            let filename = 'No Name'
-        endif
-        let ret .= i.'-'.filename
-    endfor
-    let ret .= '%#TabLineFill#%T'
-    return ret
-endfunction
-set tabline=%!ShortTabLine()

@@ -5,15 +5,15 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if has('win32')
-    cd D:\WorkPlace
+"    cd D:\WorkPlace
     nmap <leader>cf :tabedit! $HOME/_gvimrc<CR>
     " when vimrc is edited, reload it
     autocmd! bufwritepost _gvimrc source $HOME/_gvimrc
 else
-    cd ~/WorkPlace/
+"    cd ~/WorkPlace/
     nmap <leader>cf :tabedit! ~/.gvimrc<CR>
     " when vimrc is edited, reload it
-    autocmd! bufwritepost .gvimrc source ~/.gvimrc
+"    autocmd! bufwritepost .gvimrc source ~/.gvimrc
 endif
 if has("mac")
     set guifont=GohuFont-Bold:h14
