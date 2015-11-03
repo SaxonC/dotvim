@@ -36,7 +36,6 @@ else
     set runtimepath+=~/.vim//bundle/Vundle.vim
 endif
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
