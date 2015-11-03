@@ -347,14 +347,14 @@ endfunction
 function! NERDTree_IsValid()
     return 1
 endfunction
-nmap wm :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
-nmap <F2> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR><CR>
+nmap <F2> :WMToggle<CR>
 " => NERDTree
 let g:NERDTreeShowBookmarks=1
 " => Taglist
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=0
 let Tlist_Show_Menu=1
+let Tlist_File_Fold_Auto_Close=1
 if has("mac")
     let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 elseif has("win32")
