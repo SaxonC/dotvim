@@ -336,7 +336,7 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 " => winmanger
-let g:winManagerWidth=30
+let g:winManagerWidth=25
 let g:persistentBehaviour=0
 let g:NERDTree_title='[NERD Tree]'
 let g:winManagerWindowLayout='NERDTree|TagList'
